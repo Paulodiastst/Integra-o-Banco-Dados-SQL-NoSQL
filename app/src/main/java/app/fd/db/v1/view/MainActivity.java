@@ -15,6 +15,7 @@ import androidx.navigation.ui.AppBarConfiguration;
 import androidx.navigation.ui.NavigationUI;
 
 import app.fd.db.v1.R;
+import app.fd.db.v1.controller.AlunoController;
 import app.fd.db.v1.databinding.ActivityMainBinding;
 import app.fd.db.v1.model.Aluno;
 
@@ -24,6 +25,7 @@ import android.view.MenuItem;
 public class MainActivity extends AppCompatActivity {
 
     Aluno obj;
+    AlunoController controller;
 
     private AppBarConfiguration appBarConfiguration;
     private ActivityMainBinding binding;
@@ -37,11 +39,18 @@ public class MainActivity extends AppCompatActivity {
 
         setSupportActionBar(binding.toolbar);
 
+        controller = new AlunoController();
+
         obj = new Aluno();
         obj.setNome("Paulo");
         obj.setEmail("paulo@teste.com");
 
-        Log.i("FD_LOG", "Nome: " +obj.getNome() + " - Email: "+obj.getEmail());
+        // objController.salvar(obj)
+
+        controller.salvar(obj);
+
+
+
 
         NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment_content_main);
         appBarConfiguration = new AppBarConfiguration.Builder(navController.getGraph()).build();
