@@ -28,13 +28,6 @@ Ao longo do curso, você desenvolvedor um projeto mobile modelo, implementará t
 <p align="center">
 <img src="https://user-images.githubusercontent.com/79487813/172017325-26606bf4-501d-4916-9b10-43422d499cb8.png"/></P>
 
-## Exploramos os recursos essenciais em um desenvolvimento utilizando Angular conforme abaixo:
-
-- Angular 13: https://angular.io/
-- Angular HttpClient: https://angular.io/api/common/http/HttpClient
-- Angular Router: https://angular.io/api/router
-- Bootstrap 5: https://getbootstrap.com/
-
 #
 
 ## 📝 O que você aprenderá
