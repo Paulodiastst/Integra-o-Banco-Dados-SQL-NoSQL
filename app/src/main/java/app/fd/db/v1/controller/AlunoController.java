@@ -1,12 +1,16 @@
 package app.fd.db.v1.controller;
 
+import android.content.Context;
 import android.util.Log;
 
+import app.fd.db.v1.database.AppDataBase;
 import app.fd.db.v1.model.Aluno;
 
-public class AlunoController {
+public class AlunoController extends AppDataBase {
 
-    public AlunoController() {}
+    public AlunoController(Context ctx) {
+        super(ctx);
+    }
 
     // Métodos básicos e genéricos para um CRUD.
 
