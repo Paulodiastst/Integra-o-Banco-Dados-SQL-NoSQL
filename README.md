@@ -70,3 +70,13 @@ Ao longo do curso, você desenvolvedor um projeto mobile modelo, implementará t
 
   <p align="center">
 <img src="https://user-images.githubusercontent.com/79487813/172027656-79aff9ed-829c-439b-b40e-bc7fada35b02.png"/></P>
+
+## 📝 Hands on - Programação Java para criar a tabela Aluno do Dabase SQLite.
+
+- SQLite: https://www.sqlite.org/datatype3.html
+
+    <p align="center">
+  <img src="https://user-images.githubusercontent.com/79487813/172028673-d052de41-bcee-4ecd-889d-3f55e59f8f54.png"/></P>
+
+    <p align="center">
+  <img src="https://user-images.githubusercontent.com/79487813/172028781-c53a7ee4-74aa-4d24-965f-ec76026a86dc.png"/></P>
