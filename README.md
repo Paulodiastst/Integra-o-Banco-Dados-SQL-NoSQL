@@ -63,3 +63,10 @@ Ao longo do curso, você desenvolvedor um projeto mobile modelo, implementará t
 
   <p align="center">
 <img src="https://user-images.githubusercontent.com/79487813/172026291-0489cf6c-5d9b-4a7d-921a-b0e9114496e2.png"/></P>
+
+## 📝 Tipos de Dados suportados pelo SQLite para criar tabelas.
+
+- SQLite: https://www.sqlite.org/datatype3.html
+
+  <p align="center">
+<img src="https://user-images.githubusercontent.com/79487813/172027656-79aff9ed-829c-439b-b40e-bc7fada35b02.png"/></P>
