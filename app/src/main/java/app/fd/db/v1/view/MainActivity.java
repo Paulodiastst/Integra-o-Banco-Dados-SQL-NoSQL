@@ -39,7 +39,7 @@ public class MainActivity extends AppCompatActivity {
 
         setSupportActionBar(binding.toolbar);
 
-        controller = new AlunoController();
+        controller = new AlunoController(getApplicationContext());
 
         obj = new Aluno();
         obj.setNome("Paulo");

@@ -56,3 +56,10 @@ Ao longo do curso, você desenvolvedor um projeto mobile modelo, implementará t
 - Administradores de Bancos de Dados.
 - Acadêmicos de cursos com foco na Tecnologia da Informação.
 - Qualquer pessoa interessadas em desenvolver novas habilidades e competências profissionais na área de IT com Banco de Dados.
+
+#
+
+## 📝 Executando a Classe AppDataBase para criar o Banco de Dados SQLite.
+
+  <p align="center">
+<img src="https://user-images.githubusercontent.com/79487813/172026291-0489cf6c-5d9b-4a7d-921a-b0e9114496e2.png"/></P>
