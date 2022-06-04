@@ -1,4 +1,4 @@
-package app.fd.db.v1;
+package app.fd.db.v1.view;
 
 import android.os.Bundle;
 
@@ -6,6 +6,7 @@ import com.google.android.material.snackbar.Snackbar;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.util.Log;
 import android.view.View;
 
 import androidx.navigation.NavController;
@@ -13,12 +14,16 @@ import androidx.navigation.Navigation;
 import androidx.navigation.ui.AppBarConfiguration;
 import androidx.navigation.ui.NavigationUI;
 
+import app.fd.db.v1.R;
 import app.fd.db.v1.databinding.ActivityMainBinding;
+import app.fd.db.v1.model.Aluno;
 
 import android.view.Menu;
 import android.view.MenuItem;
 
 public class MainActivity extends AppCompatActivity {
+
+    Aluno obj;
 
     private AppBarConfiguration appBarConfiguration;
     private ActivityMainBinding binding;
@@ -31,6 +36,12 @@ public class MainActivity extends AppCompatActivity {
         setContentView(binding.getRoot());
 
         setSupportActionBar(binding.toolbar);
+
+        obj = new Aluno();
+        obj.setNome("Paulo");
+        obj.setEmail("paulo@teste.com");
+
+        Log.i("FD_LOG", "Nome: " +obj.getNome() + " - Email: "+obj.getEmail());
 
         NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment_content_main);
         appBarConfiguration = new AppBarConfiguration.Builder(navController.getGraph()).build();

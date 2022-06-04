@@ -8,13 +8,9 @@ public class Aluno {
     private boolean status;
 
     public Aluno() {}
+    public Aluno(int id) {}
+    public Aluno(String email){}
 
-    public Aluno(int id, String nome, String email, boolean status) {
-        this.id = id;
-        this.nome = nome;
-        this.email = email;
-        this.status = status;
-    }
 
     public int getId() {
         return id;
