@@ -78,6 +78,7 @@ public class AppDataBase extends SQLiteOpenHelper {
         return retorno;
     }
 
+
     public boolean update(String tabela, ContentValues dados) {
 
         boolean retorno = true;
@@ -98,6 +99,29 @@ public class AppDataBase extends SQLiteOpenHelper {
 
             retorno = false;
             Log.e("FD_LOG", "Erro ao alterar dados na tabela ALUNO: " + e.getMessage());
+
+        }
+
+        return retorno;
+
+    }
+
+    public boolean delete(String tabela, ContentValues dados) {
+
+        boolean retorno = true;
+
+        try {
+
+            int id = dados.getAsInteger("id");
+
+            retorno = db.delete(tabela,
+                    "id=?",
+                    new String[]{Integer.toString(id)}) > 0;
+
+        } catch (SQLException e) {
+
+            retorno = false;
+            Log.e("FD_LOG", "Erro ao deletar dados na tabela ALUNO: " + e.getMessage());
 
         }
 

@@ -25,7 +25,6 @@ public class AlunoController extends AppDataBase {
         dados.put("email", obj.getEmail());
         dados.put("status", obj.isStatus());
 
-
         Log.i("FD_LOG", "Controller--> Nome: "+
                 obj.getNome() + " - Email: "+
                 obj.getEmail()+
@@ -52,10 +51,14 @@ public class AlunoController extends AppDataBase {
 
     }
 
+    public boolean deletar(Aluno obj) {
 
+        dados = new ContentValues();
 
-    public void deletar(Aluno obj) {}
-    public void mudar(Aluno obj) {}
+        dados.put("id",obj.getId());
+
+        return delete("aluno",dados);
+    }
     public void listar(Aluno obj) {}
     public void filtrar(Aluno obj) {}
 

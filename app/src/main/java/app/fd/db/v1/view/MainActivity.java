@@ -43,13 +43,14 @@ public class MainActivity extends AppCompatActivity {
         controller = new AlunoController(getApplicationContext());
 
         obj = new Aluno();
-        obj.setNome("Fernando");
+        obj.setId(3);
+        obj.setNome("João Oliveira");
         obj.setEmail("fernando@teste.com");
         obj.setStatus(true);
 
-        if (controller.salvar(obj))
-            Toast.makeText(getApplicationContext(), "Aluno "+obj.getNome()+"Salvo com sucesso.", Toast.LENGTH_SHORT).show();
-        else Toast.makeText(getApplicationContext(), "Falha ao salvar dados do Aluno "+obj.getNome()+"...", Toast.LENGTH_SHORT).show();
+        if (controller.deletar(obj))
+            Toast.makeText(getApplicationContext(), "Aluno "+obj.getNome()+"deletado com sucesso.", Toast.LENGTH_SHORT).show();
+        else Toast.makeText(getApplicationContext(), "Falha ao deletar dados do Aluno "+obj.getNome()+"...", Toast.LENGTH_SHORT).show();
 
         NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment_content_main);
         appBarConfiguration = new AppBarConfiguration.Builder(navController.getGraph()).build();
