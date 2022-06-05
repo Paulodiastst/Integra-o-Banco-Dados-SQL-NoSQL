@@ -1,5 +1,6 @@
 package app.fd.db.v1.database;
 
+import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
 import android.database.SQLException;
@@ -48,7 +49,23 @@ public class AppDataBase extends SQLiteOpenHelper {
     }
 
     @Override
-    public void onUpgrade(SQLiteDatabase db, int i, int i1) {
+    public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
+    }
 
+    public boolean insert(String tabela, ContentValues dados){
+        boolean retorno = true;
+
+        try{
+
+            retorno = db.insert(tabela, null, dados)>0;
+
+        }catch (SQLException e){
+
+            retorno = false;
+            Log.e("FD_LOG", "Erro ao inserir dados na tabela ALUNO: "+e.getMessage());
+        }
+
+
+        return retorno;
     }
 }
