@@ -34,11 +34,33 @@ public class AlunoController extends AppDataBase {
         return insert("aluno", dados);
     }
 
+    public boolean alterar(Aluno obj){
+
+        dados = new ContentValues();
+
+        dados.put("id",obj.getId());
+        dados.put("nome",obj.getNome());
+        dados.put("email",obj.getEmail());
+        dados.put("status",obj.isStatus());
+
+        Log.i("FD_LOG","Controller--> Nome: "+
+                obj.getNome()+" - Email: "+
+                obj.getEmail()+
+                " - Status: "+obj.isStatus());
+
+        return update("aluno",dados);
+
+    }
+
+
+
     public void deletar(Aluno obj) {}
-    public void alterar(Aluno obj) {}
+    public void mudar(Aluno obj) {}
     public void listar(Aluno obj) {}
     public void filtrar(Aluno obj) {}
 
     public void alterarStatus(Aluno obj) {}
 
 }
+
+

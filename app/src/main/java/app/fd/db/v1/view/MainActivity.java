@@ -43,8 +43,8 @@ public class MainActivity extends AppCompatActivity {
         controller = new AlunoController(getApplicationContext());
 
         obj = new Aluno();
-        obj.setNome("Paulo");
-        obj.setEmail("paulo@teste.com");
+        obj.setNome("Fernando");
+        obj.setEmail("fernando@teste.com");
         obj.setStatus(true);
 
         if (controller.salvar(obj))

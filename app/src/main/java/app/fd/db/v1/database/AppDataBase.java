@@ -8,6 +8,8 @@ import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 import android.util.Log;
 
+import java.util.Calendar;
+
 public class AppDataBase extends SQLiteOpenHelper {
 
     private static final String DB_NAME = "fd_db.sqlite";
@@ -20,16 +22,18 @@ public class AppDataBase extends SQLiteOpenHelper {
             " datainc TEXT,\n" +
             "  dataalt TEXT )";
 
+    private String dataHora;
+
     Cursor cursor;
 
     SQLiteDatabase db;
 
-    public AppDataBase(Context ctx){
-        super(ctx,DB_NAME, null,DB_VERSION);
+    public AppDataBase(Context ctx) {
+        super(ctx, DB_NAME, null, DB_VERSION);
 
         db = getWritableDatabase();
 
-        Log.i("FD_LOG", "App Conectado ao Data Base "+DB_NAME+" Versão "+DB_VERSION);
+        Log.i("FD_LOG", "App Conectado ao Data Base " + DB_NAME + " Versão " + DB_VERSION);
     }
 
 
@@ -41,9 +45,9 @@ public class AppDataBase extends SQLiteOpenHelper {
             db.execSQL(TABELA_ALUNO);
             Log.i("FD_LOG", "Tabela Aluno criada com sucesso.");
 
-        }catch (SQLException e) {
+        } catch (SQLException e) {
 
-            Log.e("FD_LOG", "Erro ao criar tabela ALUNO: "+e.getMessage());
+            Log.e("FD_LOG", "Erro ao criar tabela ALUNO: " + e.getMessage());
         }
 
     }
@@ -52,20 +56,92 @@ public class AppDataBase extends SQLiteOpenHelper {
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
     }
 
-    public boolean insert(String tabela, ContentValues dados){
+    public boolean insert(String tabela, ContentValues dados) {
+
         boolean retorno = true;
+        dataHora = getDateTime();
 
-        try{
+        try {
 
-            retorno = db.insert(tabela, null, dados)>0;
+            dados.put("datainc", dataHora);
+            dados.put("dataalt", dataHora);
 
-        }catch (SQLException e){
+            retorno = db.insert(tabela, null, dados) > 0;
+
+        } catch (SQLException e) {
 
             retorno = false;
-            Log.e("FD_LOG", "Erro ao inserir dados na tabela ALUNO: "+e.getMessage());
+            Log.e("FD_LOG", "Erro ao inserir dados na tabela ALUNO: " + e.getMessage());
         }
 
 
         return retorno;
+    }
+
+    public boolean update(String tabela, ContentValues dados) {
+
+        boolean retorno = true;
+        dataHora = getDateTime();
+
+        try {
+
+            dados.put("dataalt", dataHora);
+
+            int id = dados.getAsInteger("id");
+
+            retorno = db.update(tabela,
+                    dados,
+                    "id=?",
+                    new String[]{Integer.toString(id)}) > 0;
+
+        } catch (SQLException e) {
+
+            retorno = false;
+            Log.e("FD_LOG", "Erro ao alterar dados na tabela ALUNO: " + e.getMessage());
+
+        }
+
+        return retorno;
+
+    }
+
+
+    private String getDateTime() {
+
+        String dia;
+        String mes;
+        String ano;
+
+        String hora;
+        String minuto;
+        String segundo;
+
+        try {
+
+            Calendar calendar = Calendar.getInstance();
+
+            int calDia = calendar.get(Calendar.DAY_OF_MONTH);
+            int calMes = calendar.get(Calendar.MONTH) + 1;
+
+            dia = (calDia <= 9) ? "0" + calendar.get(Calendar.DAY_OF_MONTH) : Integer.toString(calendar.get(Calendar.DAY_OF_MONTH));
+            mes = (calMes <= 9) ? "0" + calMes : Integer.toString(calMes);
+
+            ano = Integer.toString(calendar.get(Calendar.YEAR));
+
+            int iHora = calendar.get(Calendar.HOUR_OF_DAY);
+            int iMinuto = calendar.get(Calendar.MINUTE);
+            int iSegundo = calendar.get(Calendar.SECOND);
+
+            hora = (iHora <= 9) ? "0" + calendar.get(Calendar.HOUR_OF_DAY) : Integer.toString(calendar.get(Calendar.HOUR_OF_DAY));
+            minuto = (iMinuto <= 9) ? "0" + calendar.get(Calendar.MINUTE) : Integer.toString(calendar.get(Calendar.MINUTE));
+            segundo = (iSegundo <= 9) ? "0" + calendar.get(Calendar.SECOND) : Integer.toString(calendar.get(Calendar.SECOND));
+
+            return dia + "/" + mes + "/" + ano + " - " + hora + ":" + minuto + ":" + segundo;
+
+        } catch (Exception e) {
+
+            return "00/00/00 - 00:00:00";
+        }
+
     }
 }
