@@ -21,6 +21,7 @@ import app.fd.db.v1.model.Aluno;
 
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.Toast;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -44,13 +45,11 @@ public class MainActivity extends AppCompatActivity {
         obj = new Aluno();
         obj.setNome("Paulo");
         obj.setEmail("paulo@teste.com");
+        obj.setStatus(true);
 
-        // objController.salvar(obj)
-
-        controller.salvar(obj);
-
-
-
+        if (controller.salvar(obj))
+            Toast.makeText(getApplicationContext(), "Aluno "+obj.getNome()+"Salvo com sucesso.", Toast.LENGTH_SHORT).show();
+        else Toast.makeText(getApplicationContext(), "Falha ao salvar dados do Aluno "+obj.getNome()+"...", Toast.LENGTH_SHORT).show();
 
         NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment_content_main);
         appBarConfiguration = new AppBarConfiguration.Builder(navController.getGraph()).build();
