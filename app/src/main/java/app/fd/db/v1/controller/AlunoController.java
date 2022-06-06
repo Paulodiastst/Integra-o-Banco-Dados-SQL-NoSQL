@@ -4,12 +4,16 @@ import android.content.ContentValues;
 import android.content.Context;
 import android.util.Log;
 
+import java.util.List;
+
 import app.fd.db.v1.database.AppDataBase;
 import app.fd.db.v1.model.Aluno;
 
 public class AlunoController extends AppDataBase {
 
     ContentValues dados;
+
+    List<Aluno> alunos;
 
     public AlunoController(Context ctx) {
         super(ctx);
@@ -59,11 +63,18 @@ public class AlunoController extends AppDataBase {
 
         return delete("aluno",dados);
     }
-    public void listar(Aluno obj) {}
+
+    public List<Aluno> listar() {
+
+        // Implementação
+        alunos = getAllAlunos();
+
+        return alunos;
+    }
+
+
     public void filtrar(Aluno obj) {}
 
     public void alterarStatus(Aluno obj) {}
 
 }
-
-

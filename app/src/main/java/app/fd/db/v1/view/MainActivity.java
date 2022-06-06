@@ -44,8 +44,8 @@ public class MainActivity extends AppCompatActivity {
 
         obj = new Aluno();
         obj.setId(3);
-        obj.setNome("João Oliveira");
-        obj.setEmail("fernando@teste.com");
+        obj.setNome("Paulo Roberto");
+        obj.setEmail("paulo@teste.com");
         obj.setStatus(true);
 
         if (controller.deletar(obj))
@@ -63,6 +63,12 @@ public class MainActivity extends AppCompatActivity {
                         .setAction("Action", null).show();
             }
         });
+
+        for (Aluno aluno: controller.listar())
+        {
+            Log.i("FD_LOG", "ID "+aluno.getId()+" Nome: "+aluno.getNome()+" Email: "+aluno.getEmail()+" Status: "+aluno.isStatus());
+        }
+
     }
 
     @Override

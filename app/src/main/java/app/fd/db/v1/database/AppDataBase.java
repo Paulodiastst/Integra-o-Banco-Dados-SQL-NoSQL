@@ -1,5 +1,6 @@
 package app.fd.db.v1.database;
 
+import android.annotation.SuppressLint;
 import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
@@ -8,7 +9,11 @@ import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 import android.util.Log;
 
+import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.List;
+
+import app.fd.db.v1.model.Aluno;
 
 public class AppDataBase extends SQLiteOpenHelper {
 
@@ -23,11 +28,13 @@ public class AppDataBase extends SQLiteOpenHelper {
             "  dataalt TEXT )";
 
     private String dataHora;
+    private String SQL;
 
     Cursor cursor;
 
     SQLiteDatabase db;
 
+    // CREATE DATABASE
     public AppDataBase(Context ctx) {
         super(ctx, DB_NAME, null, DB_VERSION);
 
@@ -36,7 +43,7 @@ public class AppDataBase extends SQLiteOpenHelper {
         Log.i("FD_LOG", "App Conectado ao Data Base " + DB_NAME + " Versão " + DB_VERSION);
     }
 
-
+    // CREATE TABLE
     @Override
     public void onCreate(SQLiteDatabase db) {
 
@@ -52,10 +59,12 @@ public class AppDataBase extends SQLiteOpenHelper {
 
     }
 
+    // ALTER TABLE
     @Override
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
     }
 
+    // INSERT into TABLE
     public boolean insert(String tabela, ContentValues dados) {
 
         boolean retorno = true;
@@ -78,7 +87,7 @@ public class AppDataBase extends SQLiteOpenHelper {
         return retorno;
     }
 
-
+    // UPDATE TABLE
     public boolean update(String tabela, ContentValues dados) {
 
         boolean retorno = true;
@@ -106,6 +115,7 @@ public class AppDataBase extends SQLiteOpenHelper {
 
     }
 
+    // DELETE FROM
     public boolean delete(String tabela, ContentValues dados) {
 
         boolean retorno = true;
@@ -129,6 +139,44 @@ public class AppDataBase extends SQLiteOpenHelper {
 
     }
 
+   // SELECT FROM TABLE
+    @SuppressLint("Range")
+    public List<Aluno> getAllAlunos(){
+
+        List<Aluno> lista = new ArrayList<>();
+        Aluno obj;
+        boolean status = false;
+
+        SQL = "SELECT * FROM aluno ORDER by nome";
+
+        try {
+            cursor = db.rawQuery(SQL, null);
+
+            if (cursor.moveToFirst()){
+
+                do {
+                    obj = new Aluno();
+
+                    obj.setId(cursor.getInt(cursor.getColumnIndex("id")));
+                    obj.setNome(cursor.getString(cursor.getColumnIndex("nome")));
+                    obj.setEmail(cursor.getString(cursor.getColumnIndex("email")));
+
+                    status = cursor.getInt(cursor.getColumnIndex("status")) !=0;
+
+                    obj.setStatus(status);
+
+                    lista.add(obj);
+
+                }while (cursor.moveToNext());
+                // popular a lista
+            }
+
+        }catch (SQLException e){
+            Log.e("FD_LOG", "Erro ao listar dados na tabela ALUNO: " +e.getMessage());
+        }
+
+        return lista;
+    }
 
     private String getDateTime() {
 
