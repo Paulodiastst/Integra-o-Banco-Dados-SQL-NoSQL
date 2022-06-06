@@ -81,7 +81,15 @@ Ao longo do curso, você desenvolvedor um projeto mobile modelo, implementará t
     <p align="center">
   <img src="https://user-images.githubusercontent.com/79487813/172028781-c53a7ee4-74aa-4d24-965f-ec76026a86dc.png"/></P>
 
-- Implementação do método ALTERAR da CONTROLLER e UPDATER AppDataBase
+# 📝 Implementação do método ALTERAR da CONTROLLER e UPDATER AppDataBase
 
-    <p align="center">
+  <p align="center">
   <img src="https://user-images.githubusercontent.com/79487813/172067316-5caf665e-43fc-4298-b3d9-4b948cbfc178.gif"/></P>
+
+# 📝 Teste solicitado: Incluir 15 registros com dados aleatórios na tabela ALUNO e liste os dados no log.
+
+  <p align="center">
+  <img src="https://user-images.githubusercontent.com/79487813/172079050-af6869c8-1067-4cea-b6c1-7a2e9c6cf5cc.png"/></P>
+
+  <p align="center">
+  <img src="https://user-images.githubusercontent.com/79487813/172079066-6179bcd3-e82d-427f-9442-0c8460baed07.png"/></P>

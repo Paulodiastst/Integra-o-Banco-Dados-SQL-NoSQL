@@ -40,14 +40,15 @@ public class MainActivity extends AppCompatActivity {
 
         setSupportActionBar(binding.toolbar);
 
+
         controller = new AlunoController(getApplicationContext());
-
-        obj = new Aluno();
-        obj.setId(3);
-        obj.setNome("Paulo Roberto");
-        obj.setEmail("paulo@teste.com");
-        obj.setStatus(true);
-
+        for (int i = 1; i < 16; i++) {
+            obj = new Aluno();
+            obj.setNome("Paulo Roberto" +i);
+            obj.setEmail("paulo@teste.com");
+            obj.setStatus(true);
+            controller.salvar(obj);
+        }
         if (controller.deletar(obj))
             Toast.makeText(getApplicationContext(), "Aluno "+obj.getNome()+"deletado com sucesso.", Toast.LENGTH_SHORT).show();
         else Toast.makeText(getApplicationContext(), "Falha ao deletar dados do Aluno "+obj.getNome()+"...", Toast.LENGTH_SHORT).show();
